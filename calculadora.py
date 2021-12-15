@@ -21,13 +21,21 @@ fundo = Label(inicio, image=iniciofundo)
 fundo.place(x=0, y=0, relheight=1, relwidth=1)
 
 
-bemvindo = Label(inicio, text=("Bem vindo a calculadora"),
+bemvindo = Label(inicio, text=("Bem vindo a calculadora"),  # printar imagem
                  font=("Arial"), fg="Black").pack(pady=60)
-botaoadd = Button(inicio, text="Soma",
-                  command=lambda: add(), Y=20, x=10).pack()
-botaosub = Button(inicio, text="Subtração", command=lambda: sub()).pack()
-botaomult = Button(inicio, text="Multiplicação", command=lambda: mult()).pack()
-botaodiv = Button(inicio, text="Divisão", command=lambda: div()).pack()
-botaopot = Button(inicio, text="Potenciação", command=lambda: pot()).pack()
+
+espaco = Frame(inicio, bg='#DF7A50', height=60)
+espaco.pack(pady=40, fill=X)  # fill serve para preencher todo
+
+botaoadd = Button(espaco, text="Soma", command=lambda: add()).place(
+    x=38)  # o place ou grid também atuam como pack()
+botaosub = Button(espaco, text="Subtração",
+                  command=lambda: sub()).place(x=150, y=15)
+botaomult = Button(espaco, text="Multiplicação",
+                   command=lambda: mult()).place(x=38, y=30)
+botaodiv = Button(espaco, text="Divisão",
+                  command=lambda: div()).place(x=260)
+botaopot = Button(espaco, text="Potenciação",
+                  command=lambda: pot()).place(x=260, y=30)
 
 inicio.mainloop()
