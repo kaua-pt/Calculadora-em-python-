@@ -1,6 +1,65 @@
 from tkinter import *
-from funcoes import *
-from PIL import ImageTk, Image
+
+
+def show(x):
+    try:
+        if(x > 9999999):
+            x = "Error"
+    except TypeError:
+        pass
+    Label(inicio,
+          width=10,
+          text=x).place(x=53, y=310)
+
+
+def uconta(num1, num2, conta, resultado):
+    stringu = num1 + " " + conta + " " + num2 + " = " + resultado
+    Label(inicio,
+          width=10,
+          text=stringu).place(x=170, y=310)
+
+
+def add(y, z):
+    x = int(y) + int(z)
+    show(x)
+    uconta(y, z, "+", str(x))
+
+
+def sub(y, z):
+    x = int(y) - int(z)
+    show(x)
+    uconta(y, z, "-", str(x))
+
+
+def mult(y, z):
+    x = int(y) * int(z)
+    show(x)
+    uconta(y, z, "*", str(x))
+
+
+def div(y, z):
+    try:
+        x = int(y) / int(z)
+        show(x)
+        uconta(y, z, "/", str(x))
+
+    except ZeroDivisionError:
+        x = "Impossible"
+        show(x)
+        uconta(y, z, "/", "None")
+
+
+def pot(y, z):
+    x = int(y) ** int(z)
+    show(x)
+    uconta(y, z, "**", str(x))
+
+
+def raiz(y, z):
+    x = int(y) ** (1/int(z))
+    show(x)
+    uconta(y, z, "sqrt", str(x))
+
 
 inicio = Tk()                                   # estruturas básica
 inicio.title("Calculadora")                     # colocar título
@@ -64,7 +123,7 @@ botaoadd = Button(espaco,
                   command=lambda: add(num1.get(), num2.get())).place(x=38, y=5)
 botaosub = Button(espaco,
                   text="Subtração",
-                  command=lambda: sub(num1.get(), num2.get())).place(x=150, y=20)
+                  command=lambda: sub(num1.get(), num2.get())).place(x=150, y=5)
 botaomult = Button(espaco,
                    text="Multiplicação",
                    command=lambda: mult(num1.get(), num2.get())).place(x=38, y=40)
@@ -74,12 +133,29 @@ botaodiv = Button(espaco,
 botaopot = Button(espaco,
                   text="Potenciação",
                   command=lambda: pot(num1.get(), num2.get())).place(x=260, y=40)
+botaoraiz = Button(espaco,
+                   text="Raiz",
+                   command=lambda: raiz(num1.get(), num2.get())).place(x=165, y=40)
 
 textoresultado = Label(inicio,
                        text=("Resultado:"),
                        bd=2,
-                       relief="solid").place(x=150, y=280)
+                       relief="solid").place(x=55, y=280)
 
-resultado = Label(inicio).place(x=175, y=310)
+resultado = Label(inicio,
+                  width=10).place(x=48, y=310)
+
+textouconta = Label(inicio,
+                    text="Ultima conta:",
+                    bd=2,
+                    relief="solid").place(x=200, y=280)
+
+ultimaconta = Label(inicio,
+                    width=20).place(x=170, y=310)
+
+Label(inicio,
+      bd=2,
+      relief="solid").place(x=175, y=400)
+
 # o place ou grid também atuam como pack()
 inicio.mainloop()
