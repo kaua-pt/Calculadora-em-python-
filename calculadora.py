@@ -42,7 +42,7 @@ def limpar():
 inicio = Tk()                                   # estruturas básica
 inicio.title("Calculadora")                     # colocar título
 # se pode redimensionar a janela, pode-se colocar 0 e 1
-inicio.resizable(TRUE, True)
+inicio.resizable(False, False)
 # tamanho do quadrado, largura por altura em string, o + indica o local onde ela aparece inicialmente
 inicio.geometry("314x470+900+50")
 # inicio['bg'] = "Black" Coloca-se dessa forma para mudar a cor que deve ser em inglês
